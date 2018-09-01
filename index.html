@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<script type="text/javascript">
+		function tomarDatos() {
+			var dato = {};
+			dato.nombre = document.getElementById('txtCarpeta').value;
+			return dato;
+		}
+
+		function enviarDatos() {
+			var carpeta = tomarDatos();
+            
+            var serializado = "";
+			serializado = JSON.stringify(carpeta);
+			console.log(serializado);
+
+			var request = new XMLHttpRequest();
+
+			request.open("POST","/crearCarpeta",false);
+			request.send(serializado);
+
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<h1>video</h1>
+	<div style="margin: 0 auto">
+		<video src="/Users/JuanCamiloArboleda/Desktop/videoNetflix/video/amante.mp4" controls width="640" height="480"></video>
+	</div>
+
+	<h2>nombre carpeta</h2>
+	<input type="text" id="txtCarpeta">
+	<button onclick="enviarDatos()">Enviar</button>
+
+	
+
+
+</body>
+</html>
